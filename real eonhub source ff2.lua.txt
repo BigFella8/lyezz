@@ -1,5 +1,5 @@
--- ts file was generated at discord.gg/25ms
-
+-- Eon Hub Open Source Cracked By 
+@elitelyez --
 
 local players = game:GetService("Players")
 local userInputService = game:GetService("UserInputService")
