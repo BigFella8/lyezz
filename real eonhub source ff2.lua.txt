@@ -1,0 +1,2465 @@
+-- ts file was generated at discord.gg/25ms
+
+
+local players = game:GetService("Players")
+local userInputService = game:GetService("UserInputService")
+local player = players.LocalPlayer
+while not player do
+    player = players.LocalPlayer
+    wait()
+end
+local LTT = 0
+local PVtC = 1
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = Players.LocalPlayer and Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Name = "EHLS"
+local blur = Instance.new("BlurEffect")
+blur.Size = 24
+blur.Parent = game:GetService("Lighting")
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 40)
+frame.Position = UDim2.new(0.5, - 150, 0.5, - 20)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+frame.BorderSizePixel = 0
+frame.ClipsDescendants = true
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 12)
+corner.Parent = frame
+frame.Parent = screenGui
+local logo = Instance.new("ImageLabel")
+logo.Name = "Logo"
+logo.Image = "rbxassetid://100989586278785"
+logo.Size = UDim2.new(0, 100, 0, 100)
+logo.Position = UDim2.new(0.5, - 50, 0.5, - 120)
+logo.BackgroundTransparency = 1
+logo.Parent = screenGui
+local fill = Instance.new("Frame")
+fill.Size = UDim2.new(0, 0, 1, 0)
+fill.BackgroundColor3 = Color3.fromRGB(0, 255, 100)
+fill.BorderSizePixel = 0
+local fillCorner = Instance.new("UICorner")
+fillCorner.CornerRadius = UDim.new(0, 12)
+fillCorner.Parent = fill
+fill.Parent = frame
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.BackgroundTransparency = 1
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.Text = "0%"
+textLabel.Font = Enum.Font.GothamBold
+textLabel.TextSize = 24
+textLabel.TextStrokeTransparency = 0.8
+textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+textLabel.Parent = frame
+local skipButton = Instance.new("TextButton")
+skipButton.Text = "Skip"
+skipButton.Size = UDim2.new(0, 80, 0, 40)
+skipButton.Position = UDim2.new(0.5, - 40, 0.5, 30)
+skipButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+skipButton.TextColor3 = Color3.new(1, 1, 1)
+skipButton.Font = Enum.Font.GothamBold
+skipButton.TextSize = 20
+skipButton.Parent = screenGui
+local skipCorner = Instance.new("UICorner")
+skipCorner.CornerRadius = UDim.new(0, 8)
+skipCorner.Parent = skipButton
+local function Bubble()
+    local bubble = Instance.new("Frame")
+    bubble.Size = UDim2.new(0, 10, 0, 10)
+    bubble.Position = UDim2.new(math.random(), - 5, 1, math.random(- 10, 10))
+    bubble.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    bubble.BackgroundTransparency = 0.7
+    local bubbleCorner = Instance.new("UICorner")
+    bubbleCorner.CornerRadius = UDim.new(0.5, 0)
+    bubbleCorner.Parent = bubble
+    bubble.Parent = frame
+    local tween = TweenService:Create(bubble, TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+        Position = UDim2.new(bubble.Position.X.Scale, 0, - 0.5, 0),
+        BackgroundTransparency = 1
+    })
+    tween:Play()
+    tween.Completed:Connect(function()
+        bubble:Destroy()
+    end)
+end
+local tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
+local fillTween = TweenService:Create(fill, tweenInfo, {
+    Size = UDim2.new(1, 0, 1, 0)
+})
+local function Perc()
+    local progress = fill.Size.X.Scale
+    textLabel.Text = math.floor(progress * 100) .. "%"
+end
+fill:GetPropertyChangedSignal("Size"):Connect(Perc)
+local fadeTweenInfo = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
+local function OutaYeh()
+    local fadeFrame = TweenService:Create(frame, fadeTweenInfo, {
+        BackgroundTransparency = 1
+    })
+    local fadeFill = TweenService:Create(fill, fadeTweenInfo, {
+        BackgroundTransparency = 1
+    })
+    local fadeText = TweenService:Create(textLabel, fadeTweenInfo, {
+        TextTransparency = 1,
+        TextStrokeTransparency = 1
+    })
+    local fadeBlur = TweenService:Create(blur, fadeTweenInfo, {
+        Size = 0
+    })
+    local fadeLogo = TweenService:Create(logo, fadeTweenInfo, {
+        ImageTransparency = 1
+    })
+    fadeFrame:Play()
+    fadeFill:Play()
+    fadeText:Play()
+    fadeBlur:Play()
+    fadeLogo:Play()
+    fadeFrame.Completed:Connect(function()
+        screenGui:Destroy()
+        blur:Destroy()
+    end)
+end
+fillTween:Play()
+fillTween.Completed:Connect(OutaYeh)
+game:GetService("RunService").Heartbeat:Connect(function()
+    if math.random() < 0.1 then
+        Bubble()
+    end
+end)
+skipButton.Activated:Connect(function()
+    fillTween:Cancel()
+    OutaYeh()
+end)
+fillTween.Completed:Wait()
+if type(getexecutorname) == "function" then
+    local executor = getexecutorname()
+    if executor ~= "Xeno" and executor ~= "Solara" and executor ~= "JJSploit" and game.PlaceId == 8204899140 then
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+        local Handshake = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("CharacterSoundEvent")
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+        local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+        local Hooks = {}
+        local Step, CountIncrement = 0, 0
+        Hooks.debug_info = hookfunction(debug.info, function(Level, Stuff)
+            if Level == 2 and Stuff == "s" then
+                return "LocalScript"
+            end
+            return Hooks.debug_info(Level, Stuff)
+        end)
+        local function hookChildAdded(folder)
+            folder.ChildAdded:Connect(function(child)
+                local name = child.Name
+                if name:sub(1, 5) == "Catch" or name:sub(1, 6) == "BlockP" then
+                    pcall(function()
+                        local sizeConn
+                        sizeConn = child:GetPropertyChangedSignal("Size"):Connect(function()
+                            if child.Size.Magnitude > 1.55 then
+                                sizeConn:Disconnect()
+                            end
+                        end)
+                    end)
+                end
+            end)
+        end
+        for _, folder in pairs(workspace:GetDescendants()) do
+            if folder:IsA("BasePart") then
+                hookChildAdded(folder)
+            end
+        end
+        workspace.DescendantAdded:Connect(function(obj)
+            if obj:IsA("BasePart") then
+                hookChildAdded(obj)
+            end
+        end)
+        for _, v in next, getgc() do
+            if type(v) == "function" then
+                local Script = debug.info(v, "s")
+                if string.find(Script, "ReplicatedFirst.LocalScript") then
+                    setfenv(v, {})
+                    Step = Step + 1
+                    CountIncrement = CountIncrement + 1
+                end
+            end
+        end
+        for _, v in getgc() do
+            if typeof(v) == "function" and islclosure(v) then
+                if # getprotos(v) == 1 and table.find(getconstants(getproto(v, 1)), 4000002) then
+                    hookfunction(v, function()
+                    end)
+                    Step = Step + 1
+                    CountIncrement = CountIncrement + 1
+                end
+            end
+        end
+        for _, v in next, getgc(true) do
+            if type(v) == "table" and rawlen(v) == 19 and type(rawget(v, 19)) == "userdata" then
+                Hooks.__call = hookfunction(getrawmetatable(v).__call, function(self, ...)
+                    local Args = {
+                        ...
+                    }
+                    local HandshakeValues = {
+                        {
+                            660,
+                            759,
+                            863,
+                            751,
+                            771,
+                            866
+                        },
+                        {
+                            760,
+                            760,
+                            665,
+                            771,
+                            898,
+                            777
+                        },
+                        {
+                            655,
+                            775,
+                            633,
+                            724,
+                            891,
+                            666
+                        }
+                    }
+                    local function tablesEqual(t1, t2)
+                        if # t1 ~= # t2 then
+                            return false
+                        end
+                        for i = 1, # t1 do
+                            if t1[i] ~= t2[i] then
+                                return false
+                            end
+                        end
+                        return true
+                    end
+                    local function containsTable(t, list)
+                        for _, v in pairs(list) do
+                            if tablesEqual(t, v) then
+                                return true
+                            end
+                        end
+                        return false
+                    end
+                    if not containsTable(Args, HandshakeValues) then
+                        return
+                    end
+                    return Hooks.__call(self, ...)
+                end)
+                Step = Step + 1
+                CountIncrement = CountIncrement + 1
+            end
+        end
+        task.wait()
+    end
+end
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local CoreGui = game:GetService("CoreGui")
+local Workspace = game:GetService("Workspace")
+local VIM = game:GetService("VirtualInputManager")
+local Debris = game:GetService("Debris")
+local player = Players.LocalPlayer
+while not player do
+    player = Players.LocalPlayer
+    wait()
+end
+local g = {
+    blockTeleport = false,
+    originalPosition = nil
+}
+task.spawn(function()
+    while true do
+        task.wait(0.1)
+        local gameValues = workspace:FindFirstChild("GameValues")
+        if gameValues then
+            local status = gameValues:FindFirstChild("Status")
+            local possessionTag = gameValues:FindFirstChild("PossessionTag")
+            if status and possessionTag and player.Team then
+                if status.Value == "PrePlay" and possessionTag.Value == player.Team.Name then
+                    g.blockTeleport = true
+                    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                        g.originalPosition = player.Character.HumanoidRootPart.CFrame
+                    end
+                    task.wait(9e9)
+                    g.blockTeleport = false
+                end
+            end
+        end
+    end
+end)
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
+Library.ForceCheckbox = false
+Library.ShowToggleFrameInKeybinds = true
+local Window = Library:CreateWindow({
+    Title = "EonHub | FF2",
+    Footer = "Wagwan " .. player.Name .. " Da version is v7.4 Bloodclatt",
+    NotifySide = "Right",
+    ShowCustomCursor = true,
+    Center = true,
+    AutoShow = true,
+    Icon = "100989586278785"
+})
+local BallPath = false
+local predictionColor = Color3.new(1, 1, 1)
+local trajectoryColor = Color3.new(1, 1, 1)
+local eventConnection
+local trajectoryBeam = nil
+local trajectoryAttachment0 = nil
+local trajectoryAttachment1 = nil
+local trajectoryEndPart = nil
+local AE = false
+local AngleBoost = 50
+local SCheckOn = false
+local AutoAngleOn = false
+local BlockExtender = false
+local BlockExtenderRadius = 10
+local function beamProjectile(g, v0, x0, t1)
+    local c = 0.125
+    local p3 = 0.5 * g * t1 * t1 + v0 * t1 + x0
+    local p2 = p3 - (g * t1 * t1 + v0 * t1) / 3
+    local p1 = (c * g * t1 * t1 + 0.5 * v0 * t1 + x0 - c * (x0 + p3)) / (3 * c) - p2
+    local curve0 = (p1 - x0).Magnitude
+    local curve1 = (p2 - p3).Magnitude
+    local b = (x0 - p3).Unit
+    local r1 = (p1 - x0).Unit
+    local u1 = r1:Cross(b).Unit
+    local r2 = (p2 - p3).Unit
+    local u2 = r2:Cross(b).Unit
+    b = u1:Cross(r1).Unit
+    local cf1 = CFrame.new(x0.x, x0.y, x0.z, r1.x, u1.x, b.x, r1.y, u1.y, b.y, r1.z, u1.z, b.z)
+    local cf2 = CFrame.new(p3.x, p3.y, p3.z, r2.x, u2.x, b.x, r2.y, u2.y, b.y, r2.z, u2.z, b.z)
+    return curve0, - curve1, cf1, cf2
+end
+local EonNigers = {
+    Catching = Window:AddTab("Catching", "user"),
+    Physics = Window:AddTab("Physics", "user"),
+    Automatics = Window:AddTab("Automatics", "user"),
+    Throwing = Window:AddTab("Throwing", "zap"),
+    Kicker = Window:AddTab("Kicker", "zap"),
+    UISettings = Window:AddTab("UI Settings", "settings"),
+    Visuals = Window:AddTab("Visuals", "eye"),
+    Misc = Window:AddTab("Misc", "misc")
+}
+local passType = "Dime"
+local SwitchPass = {
+    ["Dime"] = "Mag",
+    ["Mag"] = "Bullet",
+    ["Bullet"] = "Dime"
+}
+local TypLead = {
+    ["Dime"] = 5,
+    ["Mag"] = 4,
+    ["Bullet"] = 0.6
+}
+local locked = false
+local lockedTarget = nil
+local lockButtonOn = false
+local switchModeButtonOn = false
+local showUi = false
+local data = {
+    Angle = 40,
+    Power = 0,
+    Direction = Vector3.new(0, 0, 0)
+}
+local trajectoryOn = false
+local pullVector = false
+local pullVectorPower = 1
+local pullVectorDistance = 5
+local pullVectorType = "Velocity"
+local pullVectoredBalls = {}
+local AntiOOBOn = false
+local CframeSpeedOn = false
+local CframeSpeed = 0.1
+local NoJpCooldownOn = false
+local QBAimbotOn = false
+local AutoCaptainOn = false
+local AutoBoostOn = false
+local autoBoostPower = 1
+local njcConnections = {}
+local moderators = {
+    "2618937233503948727",
+    "209187780079648778",
+    "265544447129812992",
+    "677964655821324329",
+    "469043698110562304",
+    "792145568586792979",
+    "490537796940070915",
+    "580140563295109148",
+    "231225289718497281",
+    "719258236930228346",
+    "345362950380322829",
+    "513196564236468226",
+    "241945212463742986",
+    "153379470164623360",
+    "1170439264",
+    "774257353"
+}
+local autoKicker = {
+    Value = false
+}
+local autoKickerRandom = {
+    Value = false
+}
+local autoKickerPower = {
+    Value = 93
+}
+local autoKickerAccuracy = {
+    Value = 93
+}
+local AutoCatchOn = false
+local CatchDistance = 10
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "Switch"
+screenGui.Parent = CoreGui
+screenGui.IgnoreGuiInset = true
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "Main"
+mainFrame.Size = UDim2.new(0, 500, 0, 60)
+mainFrame.Position = UDim2.new(0.5, - 250, 0.05, 0)
+mainFrame.BackgroundTransparency = 1
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+local uiListLayout = Instance.new("UIListLayout")
+uiListLayout.FillDirection = Enum.FillDirection.Horizontal
+uiListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+uiListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+uiListLayout.Padding = UDim.new(0, 10)
+uiListLayout.Parent = mainFrame
+local function LFCc(name, text)
+    local frame = Instance.new("Frame")
+    frame.Name = name
+    frame.Size = UDim2.new(0, 90, 0, 40)
+    frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    frame.BackgroundTransparency = 0.5
+    frame.BorderSizePixel = 0
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0, 8)
+    uiCorner.Parent = frame
+    local uiStroke = Instance.new("UIStroke")
+    uiStroke.Color = Color3.fromRGB(0, 255, 0)
+    uiStroke.Thickness = 2
+    uiStroke.Parent = frame
+    local titleLabel = Instance.new("TextLabel")
+    titleLabel.Size = UDim2.new(1, 0, 0, 20)
+    titleLabel.Position = UDim2.new(0, 0, 0, - 20)
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.Text = name .. ":"
+    titleLabel.TextColor3 = Color3.fromRGB(144, 238, 144)
+    titleLabel.TextSize = 14
+    titleLabel.Font = Enum.Font.SourceSansBold
+    titleLabel.TextXAlignment = Enum.TextXAlignment.Center
+    titleLabel.Parent = frame
+    local label = Instance.new("TextLabel")
+    label.Name = name .. "Label"
+    label.Size = UDim2.new(1, 0, 1, 0)
+    label.BackgroundTransparency = 1
+    label.Text = text
+    label.TextColor3 = Color3.fromRGB(144, 238, 144)
+    label.TextSize = 20
+    label.Font = Enum.Font.SourceSansBold
+    label.Parent = frame
+    frame.Parent = mainFrame
+    return label
+end
+local throwTypeLabel = LFCc("Type", "Dime")
+local powerLabel = LFCc("Power", "0")
+local targetLabel = LFCc("Player", "None")
+local airtimeLabel = LFCc("Time", "0.00s")
+local angleLabel = LFCc("Angle", "40")
+local interceptableLabel = LFCc("Interceptable", "No")
+local highlight = Instance.new("Highlight")
+highlight.FillColor = Color3.fromRGB(0, 255, 0)
+highlight.OutlineColor = Color3.fromRGB(0, 255, 0)
+highlight.Parent = CoreGui
+local MagsOn = false
+local MagsRange = 0
+local MagsDelayOn = false
+local MagsDelay = 0
+local ShowHitboxOn = false
+local HitboxShape = "Sphere"
+local HitboxColor = "Green"
+local hitboxes = {}
+local JumpPowerOn = false
+local JumpBoost = 50
+local FreezeTechOn = false
+local FreezeDuration = 0.1
+local ClickTackleOn = false
+local ClickTackleRange = 5
+local CatchResizeOn = false
+local CatchResizeRange = 10
+local function gotFB()
+    local character = player.Character
+    if not character then
+        return false
+    end
+    local humanoid = character:FindFirstChild("Humanoid")
+    if not humanoid then
+        return false
+    end
+    for _, tool in pairs(character:GetChildren()) do
+        if tool:IsA("Tool") and (tool.Name:lower():match("football") or tool:FindFirstChild("Handle")) then
+            return true
+        end
+    end
+    return false
+end
+local function findClosestBall()
+    local character = player.Character
+    if not character or not character:FindFirstChild("HumanoidRootPart") then
+        return nil
+    end
+    local hrp = character.HumanoidRootPart
+    local closestBall, minDist = nil, math.huge
+    for _, ball in pairs(Workspace:GetChildren()) do
+        if ball.Name:lower():match("football") and ball:IsA("BasePart") and not ball.Anchored then
+            local dist = (hrp.Position - ball.Position).Magnitude
+            if dist < minDist then
+                closestBall, minDist = ball, dist
+            end
+        end
+    end
+    return closestBall, minDist
+end
+local IBL = 0
+local function LockAndUnlock(name, text, position, action)
+    local buttonFrame = Instance.new("Frame")
+    buttonFrame.Name = name
+    buttonFrame.Size = UDim2.new(0, 50, 0, 50)
+    buttonFrame.Position = position
+    buttonFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    buttonFrame.BackgroundTransparency = 0.5
+    buttonFrame.BorderSizePixel = 0
+    buttonFrame.Visible = false
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0, 8)
+    uiCorner.Parent = buttonFrame
+    local uiStroke = Instance.new("UIStroke")
+    uiStroke.Color = Color3.fromRGB(0, 255, 0)
+    uiStroke.Thickness = 2
+    uiStroke.Parent = buttonFrame
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    textLabel.BackgroundTransparency = 1
+    textLabel.Text = text
+    textLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+    textLabel.TextSize = 14
+    textLabel.Font = Enum.Font.SourceSansBold
+    textLabel.TextWrapped = true
+    textLabel.Parent = buttonFrame
+    buttonFrame.Parent = screenGui
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(1, 0, 1, 0)
+    button.BackgroundTransparency = 1
+    button.Text = ""
+    button.Parent = buttonFrame
+    button.Activated:Connect(function()
+        if not QBAimbotOn or not gotFB() then
+            return
+        end
+        IBL = tick()
+        if action == "toggleLock" then
+            locked = not locked
+            if locked then
+                lockedTarget = target
+                textLabel.Text = "Locked"
+                uiStroke.Color = Color3.fromRGB(0, 150, 0)
+                textLabel.TextColor3 = Color3.fromRGB(0, 150, 0)
+            else
+                lockedTarget = nil
+                textLabel.Text = "Unlocked"
+                uiStroke.Color = Color3.fromRGB(0, 255, 0)
+                textLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+            end
+        elseif action == "switchMode" then
+            passType = SwitchPass[passType]
+            textLabel.Text = passType
+        end
+    end)
+    local dragging = false
+    local dragStart = nil
+    local startPos = nil
+    UserInputService.InputBegan:Connect(function(input, gameProcessed)
+        if gameProcessed then
+            return
+        end
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            local mousePos = Vector2.new(input.Position.X, input.Position.Y)
+            local buttonPos = buttonFrame.AbsolutePosition
+            local buttonSize = buttonFrame.AbsoluteSize
+            if mousePos.X >= buttonPos.X and mousePos.X <= buttonPos.X + buttonSize.X and mousePos.Y >= buttonPos.Y and mousePos.Y <= buttonPos.Y + buttonSize.Y then
+                dragging = true
+                dragStart = input.Position
+                startPos = buttonFrame.Position
+            end
+        end
+    end)
+    UserInputService.InputChanged:Connect(function(input, gameProcessed)
+        if gameProcessed then
+            return
+        end
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local delta = input.Position - dragStart
+            buttonFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+    UserInputService.InputEnded:Connect(function(input, gameProcessed)
+        if gameProcessed then
+            return
+        end
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = false
+        end
+    end)
+    return buttonFrame
+end
+local lockButton = LockAndUnlock("Lock", "Unlocked", UDim2.new(0.95, - 50, 0.3, 0), "toggleLock")
+local switchModeButton = LockAndUnlock("Switch Mode", passType, UDim2.new(0.95, - 50, 0.45, 0), "switchMode")
+local function findTarget()
+    if not QBAimbotOn then
+        return nil
+    end
+    local cc = Workspace.CurrentCamera
+    local playerDist = math.huge
+    local playerTarget = nil
+    for _, obj in ipairs(Workspace:GetChildren()) do
+        if obj:IsA("Model") and obj:FindFirstChild("Humanoid") and obj:FindFirstChild("HumanoidRootPart") then
+            local humanoid = obj:FindFirstChild("Humanoid")
+            local characterPlayer = Players:GetPlayerFromCharacter(obj)
+            if humanoid.Health > 0 and obj ~= player.Character and characterPlayer and characterPlayer.Team == player.Team then
+                local hrp = obj:FindFirstChild("HumanoidRootPart")
+                local screenpoint = cc:WorldToViewportPoint(hrp.Position)
+                local check = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(screenpoint.X, screenpoint.Y)).Magnitude
+                if check < playerDist then
+                    playerTarget = obj
+                    playerDist = check
+                end
+            end
+        end
+    end
+    local npcDist = math.huge
+    local npcTarget = nil
+    for _, bot in ipairs(Workspace:GetChildren()) do
+        if bot.Name == "npcwr" then
+            local stationA = bot:FindFirstChild("a")
+            local stationB = bot:FindFirstChild("b")
+            if stationA and stationB then
+                local bot1 = stationA:FindFirstChild("bot 1")
+                local bot3 = stationB:FindFirstChild("bot 3")
+                local bots = {
+                    bot1,
+                    bot3
+                }
+                for _, currentBot in ipairs(bots) do
+                    if currentBot and currentBot:FindFirstChild("HumanoidRootPart") then
+                        local screenpoint = cc:WorldToViewportPoint(currentBot.HumanoidRootPart.Position)
+                        local check = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(screenpoint.X, screenpoint.Y)).Magnitude
+                        if check < npcDist then
+                            npcTarget = currentBot
+                            npcDist = check
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return playerDist < npcDist and playerTarget or npcTarget
+end
+local function Hitboxx(oid)
+    if not oid or hitboxes[oid] or not MagsOn or not ShowHitboxOn then
+        return
+    end
+    local holder = oid:FindFirstAncestorOfClass("Model")
+    if holder and Players:GetPlayerFromCharacter(holder) then
+        return
+    end
+    local hitbox = Instance.new("Part")
+    hitbox.Name = "Hitbox"
+    hitbox.Size = Vector3.new(MagsRange, MagsRange, MagsRange)
+    hitbox.Anchored = true
+    hitbox.CanCollide = false
+    hitbox.Transparency = 0.4
+    hitbox.Material = Enum.Material.ForceField
+    hitbox.Color = HitboxColor == "Blue" and Color3.fromRGB(0, 0, 255) or HitboxColor == "Red" and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+    hitbox.CastShadow = false
+    hitbox.CFrame = oid.CFrame
+    if HitboxShape == "Sphere" then
+        hitbox.Shape = Enum.PartType.Ball
+    elseif HitboxShape == "Square" then
+        hitbox.Shape = Enum.PartType.Block
+    elseif HitboxShape == "Diamond" then
+        hitbox.Shape = Enum.PartType.Block
+        hitbox.Orientation = Vector3.new(0, 45, 45)
+    end
+    hitbox.Parent = oid
+    local UIStroke = Instance.new("UIStroke")
+    UIStroke.Color = Color3.fromRGB(255, 255, 255)
+    UIStroke.Thickness = 1
+    UIStroke.Transparency = 0
+    UIStroke.Parent = hitbox
+    hitboxes[oid] = {
+        part = hitbox
+    }
+    local connection
+    connection = RunService.Heartbeat:Connect(function(dt)
+        if not oid or not oid.Parent or not MagsOn or not ShowHitboxOn then
+            if hitbox then
+                hitbox:Destroy()
+            end
+            if connection then
+                connection:Disconnect()
+            end
+            hitboxes[oid] = nil
+            return
+        end
+        local holder = oid:FindFirstAncestorOfClass("Model")
+        if holder and Players:GetPlayerFromCharacter(holder) then
+            hitbox:Destroy()
+            connection:Disconnect()
+            hitboxes[oid] = nil
+            return
+        end
+        hitbox.CFrame = oid.CFrame
+        if HitboxShape == "Diamond" then
+            hitbox.Orientation = Vector3.new(0, 45, 45)
+        end
+        hitbox.Size = Vector3.new(MagsRange, MagsRange, MagsRange)
+        hitbox.Color = HitboxColor == "Blue" and Color3.fromRGB(0, 0, 255) or HitboxColor == "Red" and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+    end)
+end
+local function fitbalSize()
+    for oid, football in pairs(hitboxes) do
+        if football and football.part and oid.part then
+            oid.part.Size = Vector3.new(MagsRange, MagsRange, MagsRange)
+            oid.part.Color = HitboxColor == "Blue" and Color3.fromRGB(0, 0, 255) or HitboxColor == "Red" and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+            if HitboxShape == "Diamond" then
+                oid.part.Orientation = Vector3.new(0, 45, 45)
+            end
+        else
+            if oid.part then
+                oid.part:Destroy()
+            end
+            hitboxes[oid] = nil
+        end
+    end
+end
+local function Remove()
+    for oid, football in pairs(hitboxes) do
+        if oid.part then
+            oid.part:Destroy()
+        end
+    end
+    hitboxes = {}
+end
+local function FootballHitbox()
+    if not MagsOn then
+        return
+    end
+    for _, child in pairs(Workspace:GetChildren()) do
+        if child.Name == "Football" and child:IsA("BasePart") then
+            Hitboxx(child)
+        end
+    end
+end
+local function GetFutbal()
+    local character = player.Character
+    if not (character and character:FindFirstChild("HumanoidRootPart")) then
+        return nil
+    end
+    local playerPos = character.HumanoidRootPart.Position
+    local closestFootballPart, minDist = nil, math.huge
+    for _, child in pairs(Workspace:GetChildren()) do
+        if child.Name:lower():match("football") and child:IsA("BasePart") then
+            local dist = (child.Position - playerPos).Magnitude
+            if dist < minDist and dist <= MagsRange then
+                closestFootballPart, minDist = child, dist
+            end
+        end
+    end
+    return closestFootballPart
+end
+local function Catch(ball)
+    local character = player.Character
+    if not character then
+        return
+    end
+    local CatchLeft = character:FindFirstChild("CatchLeft")
+    local CatchRight = character:FindFirstChild("CatchRight")
+    local Closest, MinDist = nil, math.huge
+    local ballPos = ball.Position
+    local Rg = MagsRange
+    if CatchLeft and CatchLeft:IsA("BasePart") then
+        local dist = (CatchLeft.Position - ballPos).Magnitude
+        if dist < MinDist and dist <= Rg then
+            Closest, MinDist = CatchLeft, dist
+        end
+    end
+    if CatchRight and CatchRight:IsA("BasePart") then
+        local dist = (CatchRight.Position - ballPos).Magnitude
+        if dist < MinDist and dist <= Rg then
+            Closest, MinDist = CatchRight, dist
+        end
+    end
+    return Closest
+end
+local function WhenMoving(character)
+    if not character then
+        return
+    end
+    local humanoid = character:WaitForChild("Humanoid")
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    humanoid.StateChanged:Connect(function(_, newState)
+        if newState == Enum.HumanoidStateType.Jumping and JumpPowerOn then
+            task.wait(0.05)
+            humanoidRootPart.AssemblyLinearVelocity = humanoidRootPart.AssemblyLinearVelocity + Vector3.new(0, JumpBoost - 50, 0)
+        end
+    end)
+end
+local function njc(char)
+    if not char then
+        return
+    end
+    local hum = char:WaitForChild("Humanoid")
+    local connection = RunService.Stepped:Connect(function()
+        if NoJpCooldownOn then
+            hum:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+        end
+    end)
+    njcConnections[char] = connection
+end
+local function noCollide(char)
+    for _, part in ipairs(char:GetDescendants()) do
+        if part:IsA("BasePart") and part.CanCollide then
+            part.CanCollide = false
+        end
+    end
+end
+for _, plr in ipairs(Players:GetPlayers()) do
+    if plr ~= Players.LocalPlayer and plr.Character then
+        noCollide(plr.Character)
+    end
+    plr.CharacterAdded:Connect(noCollide)
+end
+Players.PlayerAdded:Connect(function(plr)
+    plr.CharacterAdded:Connect(noCollide)
+end)
+local function oC(character)
+    if not character then
+        return
+    end
+    local leftLeg = character:WaitForChild("Left Leg")
+    local rightLeg = character:WaitForChild("Right Leg")
+    local humanoid = character:WaitForChild("Humanoid")
+    local function onTouch(hit)
+        if not hit.Name:match("Arm") and not hit.Name:match("Head") then
+            return
+        end
+        if hit:IsDescendantOf(character) then
+            return
+        end
+        if humanoid.FloorMaterial ~= Enum.Material.Air then
+            return
+        end
+        character.HumanoidRootPart.AssemblyLinearVelocity = character.HumanoidRootPart.AssemblyLinearVelocity + Vector3.new(0, autoBoostPower, 0)
+    end
+    leftLeg.Touched:Connect(onTouch)
+    rightLeg.Touched:Connect(onTouch)
+end
+local function Freze(character)
+    if not character then
+        return
+    end
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    character.ChildAdded:Connect(function(child)
+        if FreezeTechOn and child.Name == "Football" and child:IsA("Tool") then
+            humanoidRootPart.Anchored = true
+            task.wait(FreezeDuration)
+            humanoidRootPart.Anchored = false
+        end
+    end)
+end
+local function resizeCatchParts(character)
+    if not character then
+        return
+    end
+    if CatchResizeOn then
+        local catchLeft = character:FindFirstChild("CatchLeft")
+        local catchRight = character:FindFirstChild("CatchRight")
+        if catchLeft then
+            catchLeft.Size = Vector3.new(CatchResizeRange, CatchResizeRange, CatchResizeRange)
+        end
+        if catchRight then
+            catchRight.Size = Vector3.new(CatchResizeRange, CatchResizeRange, CatchResizeRange)
+        end
+    else
+        local catchLeft = character:FindFirstChild("CatchLeft")
+        local catchRight = character:FindFirstChild("CatchRight")
+        if catchLeft then
+            catchLeft.Size = Vector3.new(0.75, 5, 1.5)
+        end
+        if catchRight then
+            catchRight.Size = Vector3.new(0.75, 5, 1.5)
+        end
+    end
+end
+if player.Character then
+    njc(player.Character)
+    WhenMoving(player.Character)
+    oC(player.Character)
+    Freze(player.Character)
+    resizeCatchParts(player.Character)
+end
+player.CharacterAdded:Connect(function(char)
+    njc(char)
+    WhenMoving(char)
+    oC(char)
+    Freze(char)
+    resizeCatchParts(char)
+end)
+local function toggleRenderingTextures(v)
+    if not v then
+        for _, part in pairs(workspace:GetDescendants()) do
+            if part:IsA("BasePart") then
+                if not part:GetAttribute("originalMaterial") then
+                    part:SetAttribute("originalMaterial", part.Material.Name)
+                end
+                part.Material = Enum.Material.SmoothPlastic
+            end
+        end
+    else
+        for _, part in pairs(workspace:GetDescendants()) do
+            if part:IsA("BasePart") and part:GetAttribute("originalMaterial") then
+                local originalMaterial = part:GetAttribute("originalMaterial")
+                local materialEnum = Enum.Material[originalMaterial]
+                if materialEnum then
+                    part.Material = materialEnum
+                else
+                    part.Material = Enum.Material.SmoothPlastic
+                end
+            end
+        end
+    end
+    task.wait(0.1)
+end
+local function Click()
+    local mouse = player:GetMouse()
+    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 0, true, game, 1)
+    task.wait(0.01)
+    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 0, false, game, 1)
+end
+getgenv().angleEnhancerScript = function()
+    local localPlayer = game:GetService("Players").LocalPlayer
+    local runService = game:GetService("RunService")
+    getgenv().AE = false
+    getgenv().boostedJumpPower = 50
+    getgenv().boosting = false
+    local function IShift()
+        return game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftShift) or game:GetService("UserInputService"):IsGamepadButtonDown(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonR1)
+    end
+    local function JB(character)
+        if not character then
+            return
+        end
+        local humanoid = character:WaitForChild("Humanoid")
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+        humanoid.StateChanged:Connect(function(_, newState)
+            if newState == Enum.HumanoidStateType.Jumping and getgenv().AE then
+                task.wait(0.05)
+                humanoidRootPart.AssemblyLinearVelocity = Vector3.new( humanoidRootPart.AssemblyLinearVelocity.X, getgenv().boosting and getgenv().boostedJumpPower or (getgenv().boostedJumpPower - 10), humanoidRootPart.AssemblyLinearVelocity.Z)
+            end
+        end)
+    end
+    local function DuBoost()
+        if not getgenv().boosting then
+            getgenv().boosting = true
+            task.delay(0.25, function()
+                getgenv().boosting = false
+            end)
+        end
+    end
+    if localPlayer.Character then
+        JB(localPlayer.Character)
+    end
+    localPlayer.CharacterAdded:Connect(JB)
+    runService.RenderStepped:Connect(function()
+        if getgenv().AE and IShift() then
+            DuBoost()
+        end
+    end)
+end
+getgenv().angleEnhancerScript()
+local BlockGroup = EonNigers.Physics:AddRightGroupbox("Block", "boxes")
+BlockGroup:AddToggle("BlockReach", {
+    Text = "Block reach",
+    Default = false,
+    Callback = function(Value)
+        BlockExtender = Value
+    end
+})
+BlockGroup:AddSlider("BlockRange", {
+    Text = "Block range",
+    Default = 10,
+    Min = 0,
+    Max = 15,
+    Rounding = 1,
+    Callback = function(Value)
+        BlockExtenderRadius = Value
+    end
+})
+local TackleGroup = EonNigers.Physics:AddLeftGroupbox("Tackle", "boxes")
+TackleGroup:AddToggle("ClickTackle", {
+    Text = "Click tackle",
+    Default = false,
+    Callback = function(Value)
+        ClickTackleOn = Value
+    end
+})
+TackleGroup:AddSlider("ClickTackleRange", {
+    Text = "Click tackle range",
+    Default = 5,
+    Min = 1,
+    Max = 15,
+    Rounding = 1,
+    Callback = function(Value)
+        ClickTackleRange = Value
+    end
+})
+local CatchingGroup = EonNigers.Catching:AddLeftGroupbox("Mags", "boxes")
+CatchingGroup:AddToggle("Mags", {
+    Text = "Mags",
+    Default = false,
+    Callback = function(Value)
+        MagsOn = Value
+        if not Value then
+            Remove()
+        elseif ShowHitboxOn then
+            FootballHitbox()
+        end
+    end
+})
+CatchingGroup:AddSlider("Mags Range Slider", {
+    Text = "Mags Range Slider",
+    Default = 0,
+    Min = 0,
+    Max = 25,
+    Rounding = 1,
+    Callback = function(Value)
+        MagsRange = Value
+        if MagsOn and ShowHitboxOn then
+            fitbalSize()
+        end
+    end
+})
+CatchingGroup:AddSlider("Mags Delay Slider", {
+    Text = "Mags Delay Slider",
+    Default = 0,
+    Min = 0,
+    Max = 1,
+    Rounding = 1,
+    Callback = function(Value)
+        MagsDelay = Value
+        MagsDelayOn = Value > 0
+    end
+})
+CatchingGroup:AddDropdown("MagType", {
+    Values = {
+        "Blatant",
+        "Legit",
+        "League"
+    },
+    Default = 1,
+    Multi = false,
+    Text = "MagType",
+    Callback = function(Value)
+        local newValue = Value == "Blatant" and 25 or Value == "Legit" and 10 or Value == "League" and 3
+        Library.Options["Mags Range Slider"]:SetValue(newValue)
+    end
+})
+CatchingGroup:AddToggle("ShowHitbox", {
+    Text = "ShowHitbox",
+    Default = false,
+    Callback = function(Value)
+        ShowHitboxOn = Value
+        if not Value then
+            Remove()
+        elseif MagsOn then
+            FootballHitbox()
+        end
+    end
+})
+CatchingGroup:AddDropdown("HitboxShape", {
+    Values = {
+        "Sphere",
+        "Square",
+        "Diamond"
+    },
+    Default = "Sphere",
+    Multi = false,
+    Text = "Hitbox Shape",
+    Callback = function(Value)
+        HitboxShape = Value
+        if MagsOn and ShowHitboxOn then
+            Remove()
+            FootballHitbox()
+        end
+    end
+})
+CatchingGroup:AddDropdown("HitboxColor", {
+    Values = {
+        "Green",
+        "Blue",
+        "Red"
+    },
+    Default = "Green",
+    Multi = false,
+    Text = "Hitbox Color",
+    Callback = function(Value)
+        HitboxColor = Value
+        if MagsOn and ShowHitboxOn then
+            fitbalSize()
+        end
+    end
+})
+local ResizeGroup = EonNigers.Catching:AddLeftGroupbox("Resize", "boxes")
+ResizeGroup:AddToggle("CatchResize", {
+    Text = "Catch Resize",
+    Default = false,
+    Callback = function(Value)
+        CatchResizeOn = Value
+        local char = player.Character
+        if char then
+            resizeCatchParts(char)
+        end
+    end
+})
+ResizeGroup:AddSlider("CatchResizeRange", {
+    Text = "Range",
+    Default = 10,
+    Min = 1,
+    Max = 25,
+    Rounding = 1,
+    Callback = function(Value)
+        CatchResizeRange = Value
+        if CatchResizeOn then
+            local char = player.Character
+            if char then
+                resizeCatchParts(char)
+            end
+        end
+    end
+})
+local FreezeGroup = EonNigers.Catching:AddRightGroupbox("Freeze", "boxes")
+FreezeGroup:AddToggle("FreezeTech", {
+    Text = "Freeze Tech",
+    Default = false,
+    Callback = function(Value)
+        FreezeTechOn = Value
+    end
+})
+FreezeGroup:AddSlider("FreezeDuration", {
+    Text = "Freeze Duration",
+    Default = 0.1,
+    Min = 0.1,
+    Max = 3,
+    Rounding = 1,
+    Callback = function(Value)
+        FreezeDuration = Value
+    end
+})
+local PullGroup = EonNigers.Catching:AddRightGroupbox("Pull", "boxes")
+PullGroup:AddToggle("PullVector", {
+    Text = "Pull Vector",
+    Default = false,
+    Callback = function(Value)
+        pullVector = Value
+    end
+})
+PullGroup:AddSlider("PullVectorPower", {
+    Text = "Pull vector power",
+    Default = 1,
+    Min = 1,
+    Max = 3,
+    Rounding = 1,
+    Callback = function(Value)
+        pullVectorPower = Value
+    end
+})
+PullGroup:AddSlider("PullVectorDistance", {
+    Text = "Pull vector distance",
+    Default = 5,
+    Min = 5,
+    Max = 20,
+    Rounding = 1,
+    Callback = function(Value)
+        pullVectorDistance = Value
+    end
+})
+PullGroup:AddDropdown("PullVectorType", {
+    Values = {
+        "Velocity",
+        "Teleport"
+    },
+    Default = "Velocity",
+    Multi = false,
+    Text = "Pull Vector Type",
+    Callback = function(Value)
+        pullVectorType = Value
+    end
+})
+local jumpPowerGroup = EonNigers.Physics:AddLeftGroupbox("JumpPower", "boxes")
+jumpPowerGroup:AddToggle("JumpPower", {
+    Text = "Jump Power",
+    Default = false,
+    Callback = function(Value)
+        JumpPowerOn = Value
+    end
+})
+jumpPowerGroup:AddSlider("JumpPower Slider", {
+    Text = "JumpPower Slider",
+    Default = 50,
+    Min = 50,
+    Max = 70,
+    Rounding = 1,
+    Callback = function(Value)
+        JumpBoost = Value
+    end
+})
+local physicsGroup = EonNigers.Physics:AddLeftGroupbox("Physic Stuff", "boxes")
+physicsGroup:AddToggle("AntiOOB", {
+    Text = "AntiOOB",
+    Default = false,
+    Callback = function(Value)
+        AntiOOBOn = Value
+        local boundariesFolder = Workspace:FindFirstChild("Models") and Workspace.Models:FindFirstChild("Boundaries")
+        if boundariesFolder then
+            for _, boundary in pairs(boundariesFolder:GetChildren()) do
+                if Value then
+                    boundary.Parent = nil
+                else
+                    boundary.Parent = boundariesFolder
+                end
+            end
+        end
+    end
+})
+physicsGroup:AddToggle("NoJpCooldown", {
+    Text = "No Jp Cooldown",
+    Default = false,
+    Callback = function(Value)
+        NoJpCooldownOn = Value
+        if not Value and player.Character then
+            local connection = njcConnections[player.Character]
+            if connection then
+                connection:Disconnect()
+                njcConnections[player.Character] = nil
+            end
+        elseif Value and player.Character then
+            njc(player.Character)
+        end
+    end
+})
+local AngleGroup = EonNigers.Physics:AddRightGroupbox("Angle", "boxes")
+AngleGroup:AddToggle("AngleEnhancer", {
+    Text = "Angle Enhancer",
+    Default = false,
+    Callback = function(Value)
+        getgenv().AE = Value
+    end
+})
+AngleGroup:AddSlider("AngleBoost", {
+    Text = "Angle boost",
+    Default = 1,
+    Min = 1,
+    Max = 15,
+    Rounding = 1,
+    Callback = function(Value)
+        getgenv().boostedJumpPower = Value + 49
+    end
+})
+AngleGroup:AddToggle("SCheck", {
+    Text = "S-Check(PC)",
+    Default = false,
+    Callback = function(Value)
+        SCheckOn = Value
+    end
+})
+local boostGroup = EonNigers.Physics:AddRightGroupbox("Boost", "boxes")
+boostGroup:AddToggle("AutoBoost", {
+    Text = "Auto Boost",
+    Default = false,
+    Callback = function(Value)
+        AutoBoostOn = Value
+    end
+})
+boostGroup:AddSlider("AutoBoostPower", {
+    Text = "Auto boost power",
+    Default = 1,
+    Min = 1,
+    Max = 20,
+    Rounding = 1,
+    Callback = function(Value)
+        autoBoostPower = Value
+    end
+})
+local CFrameSpeedGroup = EonNigers.Physics:AddRightGroupbox("CFrame Speed", "boxes")
+CFrameSpeedGroup:AddToggle("CFrameSpeed", {
+    Text = "CFrame Speed",
+    Default = false,
+    Callback = function(Value)
+        CframeSpeedOn = Value
+    end
+})
+CFrameSpeedGroup:AddSlider("CFrameSpeedSlider", {
+    Text = "CFrameSpeedSlider",
+    Default = 0.1,
+    Min = 0.01,
+    Max = 0.5,
+    Rounding = 2,
+    Callback = function(Value)
+        CframeSpeed = Value
+    end
+})
+local autoCaptainGroup = EonNigers.Automatics:AddRightGroupbox("AutoCaptain", "boxes")
+autoCaptainGroup:AddToggle("AutoCaptain", {
+    Text = "AutoCaptain",
+    Default = false,
+    Callback = function(Value)
+        AutoCaptainOn = Value
+    end
+})
+local CatchGroup = EonNigers.Automatics:AddLeftGroupbox("Catch", "boxes")
+CatchGroup:AddToggle("AutoCatch", {
+    Text = "Auto Catch",
+    Default = false,
+    Callback = function(Value)
+        AutoCatchOn = Value
+    end
+})
+CatchGroup:AddSlider("CatchDistance", {
+    Text = "Catch Distance",
+    Default = 10,
+    Min = 1,
+    Max = 30,
+    Rounding = 1,
+    Callback = function(Value)
+        CatchDistance = Value
+    end
+})
+local ThrowingGroup = EonNigers.Throwing:AddLeftGroupbox("QB Stuff")
+ThrowingGroup:AddButton({
+    Text = "Switch Throw Type",
+    Func = function()
+        if QBAimbotOn then
+            passType = SwitchPass[passType]
+            switchModeButton:FindFirstChild("TextLabel").Text = passType
+        end
+    end
+})
+ThrowingGroup:AddToggle("QBAimbot", {
+    Text = "QB Aimbot",
+    Default = false,
+    Callback = function(Value)
+        QBAimbotOn = Value
+        locked = false
+        lockedTarget = nil
+        data = {
+            Angle = 40,
+            Power = 0,
+            Direction = Vector3.new(0, 0, 0)
+        }
+        highlight.Parent = nil
+        mainFrame.Visible = false
+        lockButton.Visible = false
+        switchModeButton.Visible = false
+        if trajectoryBeam then
+            trajectoryBeam:Destroy()
+        end
+        if trajectoryAttachment0 then
+            trajectoryAttachment0:Destroy()
+        end
+        if trajectoryAttachment1 then
+            trajectoryAttachment1:Destroy()
+        end
+        if trajectoryEndPart then
+            trajectoryEndPart:Destroy()
+        end
+        if Value and gotFB() then
+            lockButton.Visible = lockButtonOn
+            switchModeButton.Visible = switchModeButtonOn
+            mainFrame.Visible = showUi
+        end
+    end
+})
+ThrowingGroup:AddToggle("ShowUI", {
+    Text = "Show UI",
+    Default = false,
+    Callback = function(Value)
+        showUi = Value
+        mainFrame.Visible = Value and QBAimbotOn and gotFB()
+    end
+})
+ThrowingGroup:AddToggle("LockButton", {
+    Text = "Lock Button",
+    Default = false,
+    Callback = function(Value)
+        lockButtonOn = Value
+        lockButton.Visible = Value and QBAimbotOn and gotFB()
+    end
+})
+ThrowingGroup:AddToggle("SwitchModeButton", {
+    Text = "Switch Mode Button",
+    Default = false,
+    Callback = function(Value)
+        switchModeButtonOn = Value
+        switchModeButton.Visible = Value and QBAimbotOn and gotFB()
+    end
+})
+ThrowingGroup:AddToggle("Trajectory", {
+    Text = "Trajectory",
+    Default = false,
+    Callback = function(Value)
+        trajectoryOn = Value
+        if not Value then
+            if trajectoryBeam then
+                trajectoryBeam:Destroy()
+            end
+            if trajectoryAttachment0 then
+                trajectoryAttachment0:Destroy()
+            end
+            if trajectoryAttachment1 then
+                trajectoryAttachment1:Destroy()
+            end
+            if trajectoryEndPart then
+                trajectoryEndPart:Destroy()
+            end
+            trajectoryBeam = nil
+            trajectoryAttachment0 = nil
+            trajectoryAttachment1 = nil
+            trajectoryEndPart = nil
+        end
+    end
+})
+ThrowingGroup:AddToggle("AutoAngle", {
+    Text = "Auto Angle",
+    Default = false,
+    Callback = function(Value)
+        AutoAngleOn = Value
+    end
+})
+ThrowingGroup:AddSlider("DimeLead", {
+    Text = "Dime Lead",
+    Default = 5,
+    Min = 0,
+    Max = 20,
+    Rounding = 1,
+    Callback = function(Value)
+        TypLead["Dime"] = Value
+    end
+})
+ThrowingGroup:AddSlider("MagLead", {
+    Text = "Mag Lead",
+    Default = 4,
+    Min = 0,
+    Max = 20,
+    Rounding = 1,
+    Callback = function(Value)
+        TypLead["Mag"] = Value
+    end
+})
+ThrowingGroup:AddSlider("BulletLead", {
+    Text = "Bullet Lead",
+    Default = 0.6,
+    Min = 0,
+    Max = 20,
+    Rounding = 1,
+    Callback = function(Value)
+        TypLead["Bullet"] = Value
+    end
+})
+local HeightGroup = EonNigers.Throwing:AddRightGroupbox("Height")
+HeightGroup:AddSlider("BulletHeight", {
+    Text = "Bullet height",
+    Default = 1,
+    Min = 1,
+    Max = 30,
+    Rounding = 1,
+    Callback = function(Value)
+        if passType == "Bullet" then
+            TypLead["Bullet"] = Value
+        end
+    end
+})
+HeightGroup:AddSlider("MagHeight", {
+    Text = "Mag height",
+    Default = 1,
+    Min = 1,
+    Max = 30,
+    Rounding = 1,
+    Callback = function(Value)
+        if passType == "Mag" then
+            TypLead["Mag"] = Value
+        end
+    end
+})
+HeightGroup:AddSlider("DimeHeight", {
+    Text = "Dime height",
+    Default = 1,
+    Min = 1,
+    Max = 30,
+    Rounding = 1,
+    Callback = function(Value)
+        if passType == "Dime" then
+            TypLead["Dime"] = Value
+        end
+    end
+})
+local customAngleOn = false
+local customAngleValue = 40
+local CustomGroup = EonNigers.Throwing:AddLeftGroupbox("Custom stuff")
+CustomGroup:AddToggle("CustomAngle", {
+    Text = "Custom Angle",
+    Default = false,
+    Callback = function(Value)
+        customAngleOn = Value
+    end
+})
+CustomGroup:AddSlider("Angle", {
+    Text = "Angle",
+    Default = 40,
+    Min = 0,
+    Max = 100,
+    Rounding = 1,
+    Callback = function(Value)
+        customAngleValue = Value
+    end
+})
+CustomGroup:AddLabel("Increase"):AddKeyPicker("IncreaseKey", {
+    Default = "R",
+    SyncToggleState = false,
+    Mode = "Toggle",
+    Text = "Increase",
+    Callback = function(Value)
+        if Value then
+            local newValue = math.min(100, customAngleValue + 1)
+            Library.Options["Angle"]:SetValue(newValue)
+        end
+    end
+})
+CustomGroup:AddLabel("Decrease"):AddKeyPicker("DecreaseKey", {
+    Default = "F",
+    SyncToggleState = false,
+    Mode = "Toggle",
+    Text = "Decrease",
+    Callback = function(Value)
+        if Value then
+            local newValue = math.max(0, customAngleValue - 1)
+            Library.Options["Angle"]:SetValue(newValue)
+        end
+    end
+})
+ThrowingGroup:AddLabel("Switch mode"):AddKeyPicker("SwitchModeKey", {
+    Default = "Z",
+    SyncToggleState = false,
+    Mode = "Toggle",
+    Text = "Switch throw type",
+    NoUI = false,
+    Callback = function(Value)
+        if Value and QBAimbotOn and gotFB() then
+            passType = SwitchPass[passType]
+            switchModeButton:FindFirstChild("TextLabel").Text = passType
+        end
+    end
+})
+ThrowingGroup:AddLabel("Lock"):AddKeyPicker("LockKey", {
+    Default = "G",
+    SyncToggleState = false,
+    Mode = "Toggle",
+    Text = "Toggle lock",
+    NoUI = false,
+    Callback = function(Value)
+        if Value and QBAimbotOn and gotFB() then
+            locked = not locked
+            if locked then
+                lockedTarget = target
+                lockButton:FindFirstChild("TextLabel").Text = "Locked"
+                lockButton.UIStroke.Color = Color3.fromRGB(0, 150, 0)
+                lockButton.TextLabel.TextColor3 = Color3.fromRGB(0, 150, 0)
+            else
+                lockedTarget = nil
+                lockButton:FindFirstChild("TextLabel").Text = "Unlocked"
+                lockButton.UIStroke.Color = Color3.fromRGB(0, 255, 0)
+                lockButton.TextLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+            end
+        end
+    end
+})
+local KickerGroup = EonNigers.Kicker:AddLeftGroupbox("Aimbot")
+KickerGroup:AddToggle("KickerAimbot", {
+    Text = "Kicker Aimbot",
+    Default = false,
+    Callback = function(Value)
+        autoKicker.Value = Value
+    end
+})
+KickerGroup:AddToggle("Random", {
+    Text = "Random",
+    Default = false,
+    Callback = function(Value)
+        autoKickerRandom.Value = Value
+    end
+})
+KickerGroup:AddSlider("accuracy", {
+    Text = "accuracy",
+    Default = 93,
+    Min = 0,
+    Max = 100,
+    Rounding = 0,
+    Callback = function(Value)
+        autoKickerAccuracy.Value = Value
+    end
+})
+KickerGroup:AddSlider("Power", {
+    Text = "Power",
+    Default = 93,
+    Min = 0,
+    Max = 100,
+    Rounding = 0,
+    Callback = function(Value)
+        autoKickerPower.Value = Value
+    end
+})
+local VisualsGroup = EonNigers.Visuals:AddLeftGroupbox("Football", "boxes")
+VisualsGroup:AddToggle("BallPath", {
+    Text = "Ball Path",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            local FootballLandingPredictions = true
+            eventConnection = workspace.ChildAdded:Connect(function(b)
+                if b.Name == "Football" and b:IsA("BasePart") then
+                    task.wait()
+                    local vel = b.Velocity
+                    local pos = b.Position
+                    local c0, c1, cf1, cf2 = beamProjectile(Vector3.new(0, - 28, 0), vel, pos, 10)
+                    local beam = Instance.new("Beam")
+                    local a0 = Instance.new("Attachment")
+                    local a1 = Instance.new("Attachment")
+                    beam.Color = ColorSequence.new(predictionColor)
+                    beam.Transparency = NumberSequence.new({
+                        NumberSequenceKeypoint.new(0, 1),
+                        NumberSequenceKeypoint.new(0.01, 0),
+                        NumberSequenceKeypoint.new(0.99, 0),
+                        NumberSequenceKeypoint.new(1, 0.01)
+                    })
+                    beam.CurveSize0 = c0
+                    beam.CurveSize1 = c1
+                    beam.Segments = 1750
+                    beam.Width0 = 1
+                    beam.Width1 = 1
+                    beam.Name = "Hitbox"
+                    beam.Parent = workspace.Terrain
+                    a0.Parent = workspace.Terrain
+                    a1.Parent = workspace.Terrain
+                    a0.CFrame = a0.Parent.CFrame:Inverse() * cf1
+                    a1.CFrame = a1.Parent.CFrame:Inverse() * cf2
+                    beam.Attachment0 = a0
+                    beam.Attachment1 = a1
+                    local fadeTime = 1
+                    local landedConnection
+                    landedConnection = RunService.Heartbeat:Connect(function(dt)
+                        if b.Velocity.Magnitude < 1 then
+                            landedConnection:Disconnect()
+                            if FootballLandingPredictions then
+                                local elapsed = 0
+                                while elapsed < fadeTime do
+                                    local alpha = elapsed / fadeTime
+                                    local transparencySeq = NumberSequence.new({
+                                        NumberSequenceKeypoint.new(0, alpha),
+                                        NumberSequenceKeypoint.new(1, alpha)
+                                    })
+                                    beam.Transparency = transparencySeq
+                                    elapsed = elapsed + dt
+                                    task.wait()
+                                end
+                            end
+                            beam:Destroy()
+                            a0:Destroy()
+                            a1:Destroy()
+                        end
+                    end)
+                    task.spawn(function()
+                        repeat
+                            task.wait()
+                        until b.Parent ~= workspace
+                        if beam.Parent then
+                            beam:Destroy()
+                            a0:Destroy()
+                            a1:Destroy()
+                        end
+                    end)
+                end
+            end)
+        else
+            if eventConnection then
+                eventConnection:Disconnect()
+                eventConnection = nil
+            end
+            for _, obj in pairs(workspace.Terrain:GetChildren()) do
+                if obj:IsA("Beam") and obj.Name == "Hitbox" then
+                    obj:Destroy()
+                elseif obj:IsA("Attachment") then
+                    obj:Destroy()
+                end
+            end
+        end
+    end
+})
+VisualsGroup:AddDropdown("BallPathColor", {
+    Values = {
+        "Red",
+        "White",
+        "Green",
+        "Black",
+        "Purple"
+    },
+    Default = "White",
+    Text = "BP Color",
+    Callback = function(Value)
+        if Value == "Red" then
+            predictionColor = Color3.new(1, 0, 0)
+        elseif Value == "White" then
+            predictionColor = Color3.new(1, 1, 1)
+        elseif Value == "Green" then
+            predictionColor = Color3.new(0, 1, 0)
+        elseif Value == "Black" then
+            predictionColor = Color3.new(0, 0, 0)
+        elseif Value == "Purple" then
+            predictionColor = Color3.fromRGB(128, 0, 128)
+        end
+    end
+})
+VisualsGroup:AddDropdown("TrajectoryColor", {
+    Values = {
+        "Blue",
+        "Green",
+        "White",
+        "Black",
+        "Purple"
+    },
+    Default = "White",
+    Text = "Trajectory Color",
+    Callback = function(Value)
+        if Value == "Blue" then
+            trajectoryColor = Color3.new(0, 0, 1)
+        elseif Value == "Green" then
+            trajectoryColor = Color3.new(0, 1, 0)
+        elseif Value == "White" then
+            trajectoryColor = Color3.new(1, 1, 1)
+        elseif Value == "Black" then
+            trajectoryColor = Color3.new(0, 0, 0)
+        elseif Value == "Purple" then
+            trajectoryColor = Color3.fromRGB(128, 0, 128)
+        end
+    end
+})
+VisualsGroup:AddToggle("FpsBooster", {
+    Text = "Fps Booster",
+    Default = false,
+    Callback = function(Value)
+        toggleRenderingTextures(Value)
+    end
+})
+local MenuGroup = EonNigers.UISettings:AddLeftGroupbox("Menu")
+MenuGroup:AddToggle("KeybindMenuOpen", {
+    Default = Library.KeybindFrame.Visible,
+    Text = "Open Keybind Menu",
+    Callback = function(value)
+        Library.KeybindFrame.Visible = value
+    end
+})
+MenuGroup:AddToggle("ShowCustomCursor", {
+    Text = "Custom Cursor",
+    Default = false,
+    Callback = function(Value)
+        Library.ShowCustomCursor = Value
+    end
+})
+MenuGroup:AddDropdown("NotificationSide", {
+    Values = {
+        "Left",
+        "Right"
+    },
+    Default = "Right",
+    Text = "Notification Side",
+    Callback = function(Value)
+        Library:SetNotifySide(Value)
+    end
+})
+MenuGroup:AddButton("Unload", {
+    Text = "Unload",
+    Callback = function()
+        Library:Unload()
+    end
+})
+MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", {
+    Default = "RightControl",
+    NoUI = true,
+    Text = "Menu keybind",
+    Callback = function()
+        Window:Toggle()
+    end
+})
+local ModGroup = EonNigers.Misc:AddLeftGroupbox("Mod", "boxes")
+ModGroup:AddToggle("AntiMod", {
+    Text = "Anti Mod",
+    Default = false,
+    Callback = function(Value)
+    end
+})
+local UndergroundGroup = EonNigers.Misc:AddRightGroupbox("Underground", "boxes")
+local ugToggle = UndergroundGroup:AddToggle("UG", {
+    Text = "Underground",
+    Default = false,
+    Callback = function(Value)
+        local transparency = Value and 0.5 or 0
+        local model = workspace.Models.Field.Grass
+        for _, part in pairs(model:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = not Value
+                part.Transparency = transparency
+            end
+        end
+        local existingPart = workspace:FindFirstChild("UndergroundPart")
+        if Value then
+            if not existingPart then
+                local part = Instance.new("Part")
+                part.Name = "UndergroundPart"
+                part.Size = Vector3.new(500, 0.001, 500)
+                part.CFrame = CFrame.new(10.3562937, - 1.51527438, 30.4708614)
+                part.Anchored = true
+                part.CanCollide = true
+                part.Parent = workspace
+            else
+                existingPart.Size = Vector3.new(500, 0.001, 500)
+            end
+        else
+            if existingPart then
+                existingPart:Destroy()
+            end
+            local char = player.Character
+            if char and char:FindFirstChild("HumanoidRootPart") then
+                local hrp = char.HumanoidRootPart
+                local rayOrigin = Vector3.new(hrp.Position.X, 100, hrp.Position.Z)
+                local rayDirection = Vector3.new(0, - 200, 0)
+                local raycastParams = RaycastParams.new()
+                raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+                raycastParams.FilterDescendantsInstances = {
+                    char
+                }
+                local result = workspace:Raycast(rayOrigin, rayDirection, raycastParams)
+                if result then
+                    hrp.CFrame = CFrame.new(result.Position + Vector3.new(0, 5, 0))
+                else
+                    hrp.CFrame = CFrame.new(hrp.Position.X, 10, hrp.Position.Z)
+                end
+            end
+        end
+    end
+})
+UndergroundGroup:AddLabel("Keybind"):AddKeyPicker("UGKey", {
+    Default = "U",
+    SyncToggleState = false,
+    Mode = "Toggle",
+    Text = "Underground Keybind",
+    Callback = function(Value)
+        if Value then
+            ugToggle:SetValue(not ugToggle.Value)
+        end
+    end
+})
+local function EonAngle(velocity, horizontalDistance)
+    if AutoAngleOn or passType == "Bullet" then
+        local horizontalComponent = Vector3.new(velocity.X, 0, velocity.Z).Magnitude
+        local verticalComponent = velocity.Y
+        if horizontalComponent == 0 then
+            return 90
+        end
+        local angleRadians = math.atan(verticalComponent / horizontalComponent)
+        return math.deg(angleRadians)
+    end
+    return 40
+end
+local function calculateFixedAngleVelocity(startPos, targetPos, g, angleDegrees)
+    local rad = math.rad(angleDegrees)
+    local dxz = Vector3.new(targetPos.X - startPos.X, 0, targetPos.Z - startPos.Z).Magnitude
+    local dy = targetPos.Y - startPos.Y
+    local cosAngle = math.cos(rad)
+    local sinAngle = math.sin(rad)
+    local numerator = g.Magnitude * dxz * dxz
+    local denominator = 2 * cosAngle * cosAngle * (dxz * math.tan(rad) - dy)
+    if denominator <= 0 then
+        return nil
+    end
+    local v0mag = math.sqrt(numerator / denominator)
+    local horizontalDir = (Vector3.new(targetPos.X, startPos.Y, targetPos.Z) - startPos).Unit
+    return horizontalDir * (v0mag * cosAngle) + Vector3.new(0, v0mag * sinAngle, 0)
+end
+local oldNamecall
+oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+    local method = getnamecallmethod()
+    local args = {
+        ...
+    }
+    if args[1] == "Clicked" and QBAimbotOn then
+        return oldNamecall(self, "Clicked", player.Character.HumanoidRootPart.Position, player.Character.HumanoidRootPart.Position + data.Direction * 10000, (game.PlaceId == 8206123457 and data.Power) or 1, data.Power)
+    end
+    return oldNamecall(self, ...)
+end)
+player.CharacterAdded:Connect(function(newCharacter)
+    newCharacter:WaitForChild("HumanoidRootPart")
+end)
+local function findClosestSlvEesor(maxDistance)
+    local character = player.Character
+    if not character then
+        return nil
+    end
+    local hrp = character:FindFirstChild("HumanoidRootPart")
+    if not hrp then
+        return nil
+    end
+    local closestDistance = maxDistance
+    local closestCharacter = nil
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if plr == player or plr.Team == player.Team then
+            continue
+        end
+        local targetChar = plr.Character
+        if not targetChar then
+            continue
+        end
+        local targetHrp = targetChar:FindFirstChild("HumanoidRootPart")
+        if not targetHrp then
+            continue
+        end
+        local hasFootball = false
+        for _, item in ipairs(targetChar:GetChildren()) do
+            if item:IsA("Tool") and item.Name:match("Football") then
+                hasFootball = true
+                break
+            end
+        end
+        if not hasFootball then
+            continue
+        end
+        local distance = (hrp.Position - targetHrp.Position).Magnitude
+        if distance < closestDistance then
+            closestDistance = distance
+            closestCharacter = targetChar
+        end
+    end
+    return closestCharacter
+end
+local function IsInterceptable(startPos, v0, flightTime, g, targetVel)
+    local step = 0.1
+    local maxInterceptDistance = 10
+    local opponentSpeedFactor = 1.2
+    for t = step, flightTime, step do
+        local ballPos = startPos + v0 * t + 0.5 * g * t * t
+        for _, plr in ipairs(Players:GetPlayers()) do
+            if plr ~= player and plr.Team ~= player.Team then
+                local char = plr.Character
+                if char then
+                    local hrp = char:FindFirstChild("HumanoidRootPart")
+                    if hrp then
+                        local oppPos = hrp.Position
+                        local oppVel = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)
+                        local oppFuturePos = oppPos + oppVel * t * opponentSpeedFactor
+                        local ballGroundPos = Vector3.new(ballPos.X, 0, ballPos.Z)
+                        local oppGroundPos = Vector3.new(oppFuturePos.X, 0, oppFuturePos.Z)
+                        if (ballGroundPos - oppGroundPos).Magnitude <= maxInterceptDistance then
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+task.spawn(function()
+    while true do
+        task.wait()
+        if not QBAimbotOn then
+            target = nil
+            lockedTarget = nil
+            highlight.Parent = nil
+            mainFrame.Visible = false
+            lockButton.Visible = false
+            switchModeButton.Visible = false
+            throwTypeLabel.Text = "Dime"
+            powerLabel.Text = "0"
+            targetLabel.Text = "None"
+            airtimeLabel.Text = "0.00s"
+            angleLabel.Text = "40"
+            interceptableLabel.Text = "No"
+            if trajectoryBeam then
+                trajectoryBeam:Destroy()
+            end
+            if trajectoryAttachment0 then
+                trajectoryAttachment0:Destroy()
+            end
+            if trajectoryAttachment1 then
+                trajectoryAttachment1:Destroy()
+            end
+            if trajectoryEndPart then
+                trajectoryEndPart:Destroy()
+            end
+            trajectoryBeam = nil
+            trajectoryAttachment0 = nil
+            trajectoryAttachment1 = nil
+            trajectoryEndPart = nil
+            continue
+        end
+        if locked and lockedTarget then
+            target = lockedTarget
+        else
+            target = findTarget()
+        end
+        if showUi then
+            mainFrame.Visible = QBAimbotOn and gotFB()
+        else
+            mainFrame.Visible = false
+        end
+        lockButton.Visible = lockButtonOn and QBAimbotOn and gotFB()
+        switchModeButton.Visible = switchModeButtonOn and QBAimbotOn and gotFB()
+        if target and player.Character and player.Character:FindFirstChild("Head") and target:FindFirstChild("HumanoidRootPart") and gotFB() then
+            highlight.OutlineColor = locked and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(0, 255, 0)
+            highlight.FillColor = locked and Color3.fromRGB(0, 100, 0) or Color3.fromRGB(0, 255, 0)
+            if showUi then
+                mainFrame.Visible = QBAimbotOn and gotFB()
+            end
+            local g, leadDistance = Vector3.new(0, - 28, 0), TypLead[passType]
+            local head = player.Character.Head
+            local startPos = head.Position
+            local receiverVel = target.HumanoidRootPart.Velocity
+            local horizontalVel = Vector3.new(receiverVel.X, 0, receiverVel.Z)
+            local speed = horizontalVel.Magnitude
+            local moveDirection = horizontalVel.Unit
+            if speed < 1 then
+                moveDirection = (target.HumanoidRootPart.Position - startPos).Unit
+            end
+            local targetPosition = target.HumanoidRootPart.Position + horizontalVel * 1.2 + moveDirection * leadDistance + Vector3.new(0, 5, 0)
+            local horizontalDistance = (startPos - targetPosition).Magnitude
+            if horizontalDistance < 1 then
+                data.Direction = Vector3.new(0, 0, 0)
+                data.Power = 0
+                highlight.Parent = nil
+                throwTypeLabel.Text = passType
+                powerLabel.Text = "0"
+                targetLabel.Text = "None"
+                airtimeLabel.Text = "0.00s"
+                angleLabel.Text = "40"
+                interceptableLabel.Text = "No"
+                if trajectoryBeam then
+                    trajectoryBeam:Destroy()
+                end
+                if trajectoryAttachment0 then
+                    trajectoryAttachment0:Destroy()
+                end
+                if trajectoryAttachment1 then
+                    trajectoryAttachment1:Destroy()
+                end
+                if trajectoryEndPart then
+                    trajectoryEndPart:Destroy()
+                end
+                trajectoryBeam = nil
+                trajectoryAttachment0 = nil
+                trajectoryAttachment1 = nil
+                trajectoryEndPart = nil
+                continue
+            end
+            local desiredHeight
+            if passType == "Bullet" then
+                desiredHeight = ((horizontalDistance ^ 2) * 0.0001) + ((horizontalDistance * 0.0001) / 3) + ((horizontalDistance / 13)) - 0.75
+            else
+                desiredHeight = ((horizontalDistance ^ 2) * 0.0013) + ((horizontalDistance * 0.0013) / 2) + ((horizontalDistance / 10) + 1) + 2
+            end
+            local t = (function()
+                local xMeters = desiredHeight * 4
+                local a, b, c = 0.5 * g.Y, targetPosition.Y - startPos.Y, xMeters - startPos.Y
+                local discriminant = b * b - 4 * a * c
+                return discriminant >= 0 and math.max((- b + math.sqrt(discriminant)) / (2 * a), (- b - math.sqrt(discriminant)) / (2 * a)) or 0.1
+            end)()
+            local to = target.HumanoidRootPart.Position + horizontalVel * t + moveDirection * leadDistance + Vector3.new(0, 5, 0)
+            local v0
+            if customAngleOn then
+                v0 = calculateFixedAngleVelocity(startPos, to, g, customAngleValue)
+                if not v0 then
+                    v0 = (to - startPos - 0.5 * g * t * t) / t
+                end
+            else
+                if passType == "Bullet" then
+                    v0 = calculateFixedAngleVelocity(startPos, to, g, 15)
+                    if not v0 then
+                        v0 = (to - startPos - 0.5 * g * t * t) / t
+                    end
+                else
+                    v0 = (to - startPos - 0.5 * g * t * t) / t
+                end
+            end
+            local power = math.round(v0.Y / ((startPos + v0) - startPos).Unit.Y)
+            if power < 0 then
+                power = 0
+            elseif power > 95 then
+                power = 95
+            end
+            local angle = EonAngle(v0, horizontalDistance)
+            if customAngleOn then
+                data.Angle = customAngleValue
+            else
+                data.Angle = angle
+            end
+            data.Direction = ((startPos + v0) - startPos).Unit
+            data.Power = power
+            highlight.Parent = target
+            throwTypeLabel.Text = passType
+            powerLabel.Text = tostring(power)
+            targetLabel.Text = target.Name
+            airtimeLabel.Text = string.format("%.2f s", t)
+            angleLabel.Text = tostring(math.floor(data.Angle))
+            interceptableLabel.Text = IsInterceptable(startPos, v0, t, g, receiverVel) and "Yes" or "No"
+            if trajectoryOn and QBAimbotOn and gotFB() then
+                if not trajectoryBeam then
+                    trajectoryBeam = Instance.new("Beam")
+                    trajectoryAttachment0 = Instance.new("Attachment")
+                    trajectoryAttachment1 = Instance.new("Attachment")
+                    trajectoryBeam.Color = ColorSequence.new(trajectoryColor)
+                    trajectoryBeam.Transparency = NumberSequence.new({
+                        NumberSequenceKeypoint.new(0, 0),
+                        NumberSequenceKeypoint.new(0.7, 0),
+                        NumberSequenceKeypoint.new(1, 0.9)
+                    })
+                    trajectoryBeam.Name = "Trajectory"
+                    trajectoryBeam.Parent = workspace.Terrain
+                    trajectoryBeam.Segments = 1750
+                    trajectoryAttachment0.Parent = workspace.Terrain
+                    trajectoryAttachment1.Parent = workspace.Terrain
+                    trajectoryBeam.Attachment0 = trajectoryAttachment0
+                    trajectoryBeam.Attachment1 = trajectoryAttachment1
+                    trajectoryBeam.Width0 = 0.8
+                    trajectoryBeam.Width1 = 0.8
+                    trajectoryEndPart = Instance.new("Part")
+                    trajectoryEndPart.Anchored = true
+                    trajectoryEndPart.CanCollide = false
+                    trajectoryEndPart.Size = Vector3.new(1, 1, 1)
+                    trajectoryEndPart.Material = Enum.Material.Neon
+                    trajectoryEndPart.Color = trajectoryColor
+                    trajectoryEndPart.Parent = workspace.Terrain
+                end
+                local c0, c1, cf1, cf2 = beamProjectile(Vector3.new(0, - 28, 0), v0, startPos, t)
+                trajectoryBeam.CurveSize0 = c0
+                trajectoryBeam.CurveSize1 = c1
+                trajectoryAttachment0.CFrame = trajectoryAttachment0.Parent.CFrame:Inverse() * cf1
+                trajectoryAttachment1.CFrame = trajectoryAttachment1.Parent.CFrame:Inverse() * cf2
+                trajectoryEndPart.Position = cf2.Position
+            elseif not trajectoryOn and trajectoryBeam then
+                trajectoryBeam:Destroy()
+                trajectoryAttachment0:Destroy()
+                trajectoryAttachment1:Destroy()
+                trajectoryEndPart:Destroy()
+                trajectoryBeam = nil
+                trajectoryAttachment0 = nil
+                trajectoryAttachment1 = nil
+                trajectoryEndPart = nil
+            end
+        else
+            highlight.Parent = nil
+            mainFrame.Visible = false
+            if trajectoryBeam then
+                trajectoryBeam:Destroy()
+            end
+            if trajectoryAttachment0 then
+                trajectoryAttachment0:Destroy()
+            end
+            if trajectoryAttachment1 then
+                trajectoryAttachment1:Destroy()
+            end
+            if trajectoryEndPart then
+                trajectoryEndPart:Destroy()
+            end
+            trajectoryBeam = nil
+            trajectoryAttachment0 = nil
+            trajectoryAttachment1 = nil
+            trajectoryEndPart = nil
+        end
+    end
+end)
+task.spawn(function()
+    while true do
+        task.wait()
+        if not CframeSpeedOn then
+            continue
+        end
+        local character = player.Character
+        if not character then
+            continue
+        end
+        local hrp = character:FindFirstChild("HumanoidRootPart")
+        if not hrp then
+            continue
+        end
+        local humanoid = character:FindFirstChild("Humanoid")
+        if not humanoid then
+            continue
+        end
+        local moveDirection = humanoid.MoveDirection
+        hrp.CFrame = hrp.CFrame + moveDirection * CframeSpeed
+    end
+end)
+task.spawn(function()
+    while true do
+        task.wait()
+        local character = player.Character
+        local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+        if not character or not humanoidRootPart then
+            continue
+        end
+        if not pullVector then
+            continue
+        end
+        for _, ball in pairs(Workspace:GetChildren()) do
+            if not ball.Name:lower():match("football") or not ball:IsA("BasePart") or ball.Anchored then
+                continue
+            end
+            if pullVectoredBalls[ball] then
+                continue
+            end
+            local distance = (humanoidRootPart.Position - ball.Position).Magnitude
+            if distance > pullVectorDistance then
+                continue
+            end
+            local direction = (ball.Position - humanoidRootPart.Position).Unit
+            if pullVectorType == "Teleport" and not g.blockTeleport then
+                pullVectoredBalls[ball] = true
+                local teleportDistance = 10 + ((pullVectorPower - 1) * 5)
+                humanoidRootPart.CFrame = humanoidRootPart.CFrame + (direction * teleportDistance)
+            elseif pullVectorType == "Velocity" then
+                humanoidRootPart.AssemblyLinearVelocity = direction * pullVectorPower * 25
+            end
+        end
+    end
+end)
+task.spawn(function()
+    while task.wait(0.1) do
+        if not AutoCatchOn then
+            continue
+        end
+        local ball, distance = findClosestBall()
+        if ball and distance <= CatchDistance then
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CharacterSoundEvent"):FireServer("PlayerActions", "catch")
+        end
+    end
+end)
+task.spawn(function()
+    while true do
+        task.wait()
+        local character = player.Character
+        if not character then
+            continue
+        end
+        local blockPart = character:FindFirstChild("BlockPart")
+        if not blockPart then
+            continue
+        end
+        if BlockExtender then
+            blockPart.Size = Vector3.new(BlockExtenderRadius, BlockExtenderRadius, BlockExtenderRadius)
+            blockPart.Transparency = 1
+        else
+            blockPart.Size = Vector3.new(0.75, 5, 1.5)
+            blockPart.Transparency = 1
+        end
+    end
+end)
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then
+        return
+    end
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        if not ClickTackleOn then
+            return
+        end
+        local SlvEesor = findClosestSlvEesor(ClickTackleRange)
+        if SlvEesor and SlvEesor:FindFirstChild("HumanoidRootPart") then
+            local character = player.Character
+            if not character then
+                return
+            end
+            local hrp = character:FindFirstChild("HumanoidRootPart")
+            if not hrp then
+                return
+            end
+            hrp.CFrame = SlvEesor.HumanoidRootPart.CFrame
+        end
+    end
+end)
+Workspace.ChildAdded:Connect(function(child)
+    if child.Name:lower():match("football") and MagsOn and ShowHitboxOn and child:IsA("BasePart") then
+        Hitboxx(child)
+    end
+end)
+local LMGG = 0
+RunService.Heartbeat:Connect(function(deltaTime)
+    if not MagsOn then
+        return
+    end
+    local CNP = tick()
+    if MagsDelayOn and (CNP - LMGG) < MagsDelay then
+        return
+    end
+    local MAGTHATBIHFOO = GetFutbal()
+    if MAGTHATBIHFOO then
+        local ClosestCatchPart = Catch(MAGTHATBIHFOO)
+        if ClosestCatchPart then
+            firetouchinterest(ClosestCatchPart, MAGTHATBIHFOO, 0)
+            task.wait()
+            firetouchinterest(ClosestCatchPart, MAGTHATBIHFOO, 1)
+        end
+    end
+    if MagsDelayOn then
+        LMGG = CNP
+    end
+end)
+local finishLine = Workspace.Models:FindFirstChild("LockerRoomA") and Workspace.Models.LockerRoomA:FindFirstChild("FinishLine") or Instance.new('Part')
+finishLine:GetPropertyChangedSignal("CFrame"):Connect(function()
+    if AutoCaptainOn and finishLine.Position.Y > 0 then
+        player.Character.HumanoidRootPart.CFrame = finishLine.CFrame + Vector3.new(0, 2, 0)
+    end
+end)
+player.PlayerGui.ChildAdded:Connect(function(child)
+    if child.Name == "KickerGui" and autoKicker.Value then
+        local cursor = child:FindFirstChild("Cursor", true)
+        if autoKickerRandom.Value then
+            autoKickerPower.Value = math.random(75, 100)
+            autoKickerAccuracy.Value = math.random(75, 100)
+        end
+        repeat
+            task.wait(0.005)
+        until cursor.Position.Y.Scale < 0.01 + ((100 - autoKickerPower.Value) * 0.012)
+        Click()
+        repeat
+            task.wait(0.005)
+        until cursor.Position.Y.Scale > 0.9 - ((100 - autoKickerAccuracy.Value) * 0.001)
+        Click()
+    end
+end)
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if input.UserInputType == Enum.UserInputType.Gamepad1 and not gameProcessed then
+        if input.KeyCode == Enum.KeyCode.DPadUp then
+            if QBAimbotOn and gotFB() then
+                locked = not locked
+                if locked then
+                    lockedTarget = target
+                    if lockButton then
+                        lockButton:FindFirstChild("TextLabel").Text = "Locked"
+                        lockButton.UIStroke.Color = Color3.fromRGB(0, 150, 0)
+                        lockButton.TextLabel.TextColor3 = Color3.fromRGB(0, 150, 0)
+                    end
+                else
+                    lockedTarget = nil
+                    if lockButton then
+                        lockButton:FindFirstChild("TextLabel").Text = "Unlocked"
+                        lockButton.UIStroke.Color = Color3.fromRGB(0, 255, 0)
+                        lockButton.TextLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+                    end
+                end
+            end
+        elseif input.KeyCode == Enum.KeyCode.DPadDown then
+            if QBAimbotOn and gotFB() then
+                passType = SwitchPass[passType]
+                if switchModeButton then
+                    switchModeButton:FindFirstChild("TextLabel").Text = passType
+                end
+            end
+        end
+    end
+end)
+Library:OnUnload(function()
+    if highlight then
+        highlight:Destroy()
+    end
+    if screenGui then
+        screenGui:Destroy()
+    end
+    for _, data in pairs(hitboxes) do
+        if data.part then
+            data.part:Destroy()
+        end
+    end
+    for _, connection in pairs(njcConnections) do
+        if connection then
+            connection:Disconnect()
+        end
+    end
+    if eventConnection then
+        eventConnection:Disconnect()
+        eventConnection = nil
+    end
+    if trajectoryBeam then
+        trajectoryBeam:Destroy()
+    end
+    if trajectoryAttachment0 then
+        trajectoryAttachment0:Destroy()
+    end
+    if trajectoryAttachment1 then
+        trajectoryAttachment1:Destroy()
+    end
+    if trajectoryEndPart then
+        trajectoryEndPart:Destroy()
+    end
+    for _, obj in pairs(workspace.Terrain:GetChildren()) do
+        if obj:IsA("Beam") and obj.Name == "Hitbox" then
+            obj:Destroy()
+        elseif obj:IsA("Attachment") then
+            obj:Destroy()
+        end
+    end
+    AutoBoostOn = false
+    BlockExtender = false
+    MagsOn = false
+    local character = player.Character
+    if character then
+        local blockPart = character:FindFirstChild("BlockPart")
+        if blockPart then
+            blockPart.Size = Vector3.new(0.75, 5, 1.5)
+            blockPart.Transparency = 1
+        end
+        if CatchResizeOn then
+            local catchLeft = character:FindFirstChild("CatchLeft")
+            local catchRight = character:FindFirstChild("CatchRight")
+            if catchLeft then
+                catchLeft.Size = Vector3.new(0.75, 5, 1.5)
+            end
+            if catchRight then
+                catchRight.Size = Vector3.new(0.75, 5, 1.5)
+            end
+        end
+    end
+end)
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+SaveManager:SetIgnoreIndexes({
+    "MenuKeybind"
+})
+ThemeManager:SetFolder("EonHub")
+SaveManager:SetFolder("EonHub/FF2")
+SaveManager:BuildConfigSection(EonNigers.UISettings)
+ThemeManager:ApplyToTab(EonNigers.UISettings)
+SaveManager:LoadAutoloadConfig()
